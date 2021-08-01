@@ -9,22 +9,27 @@
 </head>
 <body>
   <h1 class="h1">WAR!!1!!</h1>
-  <section class="deck-zone">
-    <card class="deck">
-      <img src="/images/playing_cards.svg"alt="" class="card">
-    </card>
-  </section>
+  
   <section class="play_area">
+    <section class="deck-zone">
+      <card class="deck">
+        <img src="/images/playing_cards.svg"alt="" class="card">
+      </card>
+    </section>
 
+    <section class="deck_zone player">
+      <card class="deck">
+        <img src="/images/playing_cards.svg"alt="" class="card">
+      </card>
+    </section>
   </section>
-  <!-- <section class="deck_zone">
-    <card class="deck">
 
-    </card>
-  </section> -->
+    <button id="button_draw" class="button_draw">Draw</button>
+
   <script type="module" src="scripts/script.js"></script>
   <!-- resources
   How to build a simple card game with JavaScript: https://www.youtube.com/watch?v=NxRwIZWjLtE&t=609s
+  Fisher-Yates sort: https://medium.com/@nitinpatel_20236/how-to-shuffle-correctly-shuffle-an-array-in-javascript-15ea3f84bfb
   -->
 </body>
 </html>
