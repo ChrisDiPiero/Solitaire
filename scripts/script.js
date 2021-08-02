@@ -15,6 +15,7 @@ let computerTakenCards = [];
 let playerTakenCards = [];
 let temp = [];
 
+// war logic
 const playRound = function () {
   if (!computerDeck.length || !playerDeck.length) {
     let won = () => {
@@ -28,6 +29,7 @@ const playRound = function () {
     }
     console.log(`game over! ${won()}`)
   }
+  createCard(".computer");
   if (computerDeck[0].value > playerDeck[0].value) {
     computerTakenCards.push(computerDeck.splice(0, 1), playerDeck.splice(0, 1));
     if(temp.length) {tempHolding(computerTakenCards)}
@@ -41,8 +43,21 @@ const playRound = function () {
   console.log("computerDeck: " + computerDeck.length);
 }
 
-const tempHolding = function(takenDeck) {
+const tempHolding = function(takenDeck) { //adds to temp array for ties
   takenDeck.push(...temp.splice(0));
+}
+
+const createCard = function(player) {
+  const thisDeck = document.querySelector(player);
+  const cardFace = document.createElement('img');
+  const thisCard = document.createElement('card');
+
+  cardFace.classList.add('card', 'face');
+  cardFace.setAttribute('src', '/images/playing_cards.svg')
+  thisCard.classList.add('card_container');
+
+  thisCard.appendChild(cardFace);
+  thisDeck.appendChild(thisCard);
 }
 
 drawCard.addEventListener('click', playRound);
