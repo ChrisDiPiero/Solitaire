@@ -8,28 +8,32 @@
   <title>WAR!!1!!1</title>
 </head>
 <body>
-  <h1 class="h1">WAR!!1!!</h1>
+<div class="main container">
+    <h1 class="h1">WAR!!1!!</h1>
+    
+    <section class="play_area">
+      <section class="deck-zone">
+        <card class="card_container">
+          <img src="/images/card_back.svg"alt="" class="card_back">
+        </card>
+        <p class="name">Computer</p>
+      </section>
   
-  <section class="play_area">
-    <section class="deck-zone">
-      <card class="deck">
-        <img src="/images/playing_cards.svg"alt="" class="card">
-      </card>
+      <section class="deck_zone player">
+        <p class="name">Player</p>
+        <card class="card_container">
+          <img src="/images/card_back.svg"alt="" class="card_back">
+        </card>
+      </section>
     </section>
-
-    <section class="deck_zone player">
-      <card class="deck">
-        <img src="/images/playing_cards.svg"alt="" class="card">
-      </card>
-    </section>
-  </section>
-
-    <button id="button_draw" class="button_draw">Draw</button>
-
-  <script type="module" src="scripts/script.js"></script>
-  <!-- resources
-  How to build a simple card game with JavaScript: https://www.youtube.com/watch?v=NxRwIZWjLtE&t=609s
-  Fisher-Yates sort: https://medium.com/@nitinpatel_20236/how-to-shuffle-correctly-shuffle-an-array-in-javascript-15ea3f84bfb
-  -->
+  
+      <button id="button_draw" class="button_draw">Draw</button>
+  
+    <script type="module" src="scripts/script.js"></script>
+    <!-- resources
+    How to build a simple card game with JavaScript: https://www.youtube.com/watch?v=NxRwIZWjLtE&t=609s
+    Fisher-Yates sort: https://medium.com/@nitinpatel_20236/how-to-shuffle-correctly-shuffle-an-array-in-javascript-15ea3f84bfb
+    -->
+</div>
 </body>
 </html>

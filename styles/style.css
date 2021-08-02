@@ -2,41 +2,76 @@
   padding: 0;
   margin: 0;
   border: none;
+  box-sizing: border-box;
 }
 
-body {
+.main {
   background-color: #d6beb8;
-  text-align: center;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .h1 {
   text-align: center;
 }
 
-.deck {
+.play_area {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 80%;
+  height: 500px;
+  background-color:chartreuse;
+  border: solid 3px #fff;
+  box-shadow: #333 0 0 7px;
+  align-self: center;
+  padding: 10px;
+}
+
+.deck-zone {
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-end;
+}
+
+.name {
+  
+}
+
+
+.card_container {
   background-color: orange;
   width: 100px;
-  height: 140px;
+  height: 138px;
   display: block;
   overflow: hidden;
 }
 
-.card {
+.card_back {
+  transform-origin: top left;
+  transform: scale(0.55);
+}
+
+/* .card {
   transform-origin: top left;
   transform: scale(0.55);
   object-position: 0% 0%;
-}
+} */
 
-.play_area {
-  display: block;
-  width: 80%;
-  height: 450px;
-  background-color:chartreuse;
-  border: solid 3px #fff;
-  box-shadow: #333 0 0 7px;
-}
 
 .button_draw {
+  align-self: center;
   background: radial-gradient(hsl(15, 100%, 50%), hsl(15, 100%, 40%));
 
   font-size: 1.4rem;
