@@ -12,19 +12,43 @@
     <h1 class="h1">WAR!!1!!</h1>
     
     <section class="play_area">
-      <section class="deck-zone computer">
-        <card class="card_container">
-          <img src="/images/card_back.svg"alt="" class="card">
+        <card class="card_container computer">
+          <img src="/images/card_back.svg"alt="card back" class="card">
         </card>
-        <p class="name">Computer</p>
-      </section>
+
+        <!-- making flip work -->
+        <section id="flipCard-computer" class="card_container computer">
+          <div class="flip">
+            <card class="front">
+              <img src="/images/playing_cards.svg"alt="card face" class="card">
+            </card>
   
-      <section class="deck_zone player">
+            <card class="back">
+              <img src="/images/card_back.svg"alt="card back" class="card">
+            </card>
+          </div>
+        </section>
+
+        <p class="name">Computer</p>
+  
         <p class="name">Player</p>
-        <card class="card_container">
+
+        <card class="card_container player">
           <img src="/images/card_back.svg" alt="card back" class="card">
         </card>
-      </section>
+
+        <!-- making flip work -->
+        <section id="flipCard-player" class="card_container player">
+          <div class="flip">
+            <card class="front">
+              <img src="/images/card_back.svg" alt="card back" class="card">
+            </card>
+  
+            <card class="back">
+              <img src="/images/card_back.svg" alt="card back" class="card">
+            </card>
+          </div>
+        </section>
     </section>
   
       <button id="button_draw" class="button_draw">Draw</button>
@@ -33,7 +57,8 @@
     <!-- resources
     How to build a simple card game with JavaScript: https://www.youtube.com/watch?v=NxRwIZWjLtE&t=609s
     Fisher-Yates sort: https://medium.com/@nitinpatel_20236/how-to-shuffle-correctly-shuffle-an-array-in-javascript-15ea3f84bfb
-    -->
+    flip animation: https://www.w3schools.com/howto/howto_css_flip_card.asp
+  -->
 </div>
 </body>
 </html>

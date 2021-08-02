@@ -15,6 +15,29 @@ let computerTakenCards = [];
 let playerTakenCards = [];
 let temp = [];
 
+//global Functions
+const calcFace = function(player, cardData) {
+  let x = cardData.value - 2;
+  let y;
+  switch(cardData.suit) {
+    case "spades":
+      y = 0;
+      break;
+    case "clubs":
+      y = 1;
+      break;
+    case "hearts":
+      y = 2;
+      break;
+    case "diamonds":
+      y = 3;
+      break;
+  }
+
+  const root = document.documentElement;
+  root.style.setProperty(`--svg-position-${player}`, `${-179.5 * x}px ${-252 * y}px`);
+}
+
 // war logic
 const playRound = function () {
   if (!computerDeck.length || !playerDeck.length) {
@@ -27,9 +50,14 @@ const playRound = function () {
         return "It was a tie!"
       }
     }
-    console.log(`game over! ${won()}`)
+    alert(`game over! ${won()}`);
   }
-  createCard(".computer");
+
+  createCard("computer", computerDeck[0]);
+  console.log(computerDeck[0]);
+  createCard("player", playerDeck[0]);
+  console.log(playerDeck[0]);
+
   if (computerDeck[0].value > playerDeck[0].value) {
     computerTakenCards.push(computerDeck.splice(0, 1), playerDeck.splice(0, 1));
     if(temp.length) {tempHolding(computerTakenCards)}
@@ -40,25 +68,30 @@ const playRound = function () {
     temp.push(computerDeck.splice(0, 1), playerDeck.splice(0, 1));
     playRound();
   }
-  console.log("computerDeck: " + computerDeck.length);
 }
 
 const tempHolding = function(takenDeck) { //adds to temp array for ties
   takenDeck.push(...temp.splice(0));
 }
 
-const createCard = function(player) {
-  const thisDeck = document.querySelector(player);
-  const cardFace = document.createElement('img');
-  const thisCard = document.createElement('card');
+const createCard = function(player, cardData) {
+  
+  // const playArea = document.querySelector(".play_area");
+  // const cardFace = document.createElement('img');
+  // const thisCard = document.createElement('card');
 
-  cardFace.classList.add('card', 'face');
-  cardFace.setAttribute('src', '/images/playing_cards.svg')
-  thisCard.classList.add('card_container');
+  // calcFace(player, cardData);
 
-  thisCard.appendChild(cardFace);
-  thisDeck.appendChild(thisCard);
+  // cardFace.classList.add('card', 'face');
+  // cardFace.setAttribute('src', '/images/playing_cards.svg')
+  
+  // thisCard.classList.add('card_container', `${player}`);
+
+  // thisCard.appendChild(cardFace);
+  // playArea.appendChild(thisCard);
 }
+
+
 
 drawCard.addEventListener('click', playRound);
 // while (!gameOver) {

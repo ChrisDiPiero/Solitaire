@@ -2,9 +2,10 @@
   --card-width: 100px;
   --card-height: 138px;
   --computer-offset: translate(10px, 10px);
-  --player-offset: translate(189px, 332px);
+  --player-offset: translate(189px, 350px);
   --card-scale: scale(0.55);
-  --svg-position: 0% 0%;
+  --svg-position-computer: 0% 0%;
+  --svg-position-player: 0% 0%;
 }
 
 * {
@@ -42,7 +43,7 @@
   position: relative;
 }
 
-.deck-zone {
+.computer {
   position: absolute;
   transform-origin: top left;
   transform: var(--computer-offset);
@@ -52,10 +53,6 @@
   position: absolute;
   transform-origin: top left;
   transform: var(--player-offset);
-}
-
-.name {
-  
 }
 
 
@@ -72,8 +69,33 @@
   transform: var(--card-scale);
 }
 
-.face {
-  object-position: var(--svg-position);
+.front {
+  backface-visibility: hidden;
+}
+
+.back {
+  backface-visibility: hidden;
+}
+
+/* section .card_container {
+  perspective: 1000px;
+} */
+
+section .card_container:hover .flip {
+  transform: rotateY(180deg);
+}
+
+.flip {
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.player .face {
+  object-position: var(--svg-position-player);
+}
+
+.computer .face {
+  object-position: var(--svg-position-computer);
 }
 
 /* .card {
