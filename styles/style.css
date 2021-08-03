@@ -1,4 +1,12 @@
 :root {
+  --main-bg-color: #4143b1;
+  --second-bg-color: #221727;
+  --second-bg-color-t: rgba(34, 23, 39, 0.8);
+  --highlight-color: #5ef4d6;
+  --highlight2-color: #24e5a3;
+  --w-color: #f1fff6;
+  
+  --play-area-width: 300px;
   --card-width: 100px;
   --card-height: 138px;
   --computer-offset: translate(10px, 10px);
@@ -15,11 +23,12 @@
   margin: 0;
   border: none;
   box-sizing: border-box;
+  font-family: 'Rubik', sans-serif;
 }
 
 .overlay {
   position: fixed;
-  width: 350px;
+  width: var(--play-area-width);
   height: 560px;
   z-index: 4;
   border-radius: 10px;
@@ -31,7 +40,7 @@
 }
 
 .main {
-  background-color: #d6beb8;
+  background-color: var(--second-bg-color);
   height: 100vh;
 }
 
@@ -43,14 +52,15 @@
 
 .h1 {
   text-align: center;
+  color: var(--highlight-color);
 }
 
 .play_area {
-  width: 300px;
+  width: var(--play-area-width);
   height: 500px;
-  background-color:chartreuse;
+  background-color:var(--main-bg-color);
   border: solid 3px #fff;
-  box-shadow: #333 0 0 7px;
+  box-shadow: inset 0 0 10px rgb(10, 10, 10);
   align-self: center;
   position: relative;
 }
@@ -71,7 +81,6 @@
   z-index: 3;
   position: absolute;
   transform-origin: center;
-  font-family: Comic Sans MS;
   font-size: 2rem;
   color: #000;
   text-shadow: 2px 2px 0px #e7eef1, 5px 5px 0px rgba(0,0,0,0.1);
@@ -142,33 +151,22 @@
   100% {left: -38px; top: -170px}
 }
 
-@keyframes spin-card {
-  0% {transform: rotate(0deg)}
-  60% {transform: rotate(0deg)}
-  100% {transform: rotate(720deg)}
-}
-
-@keyframes spin-card {
-  0% {transform: shrink(1)}
-  60% {transform: shrink(1)}
-  100% {transform: shrink(0)}
-}
-
 .score {
-  font-size: 1rem;
+  font-size: 1.25rem;
   text-align: center;
+  color: var(--highlight-color);
   display: flex;
   justify-content: space-evenly;
 }
 
 .button_draw {
   align-self: center;
-  background: radial-gradient(hsl(15, 100%, 50%), hsl(15, 100%, 40%));
+  background: radial-gradient(hsl(168, 87%, 66%), hsl(168, 87%, 56%));
 
   font-size: 1.4rem;
   text-shadow: 0 -1px 0 #c3af07;
   color: white;
-  border: solid 1px hsl(15, 100%, 20%);
+  border: solid 1px hsl(168, 87%, 36%);
   border-radius: 10px;
   height: 35px;
   width: 120px;
@@ -176,29 +174,29 @@
 
   outline: none;
 
-  box-shadow: inset 0 1px 0 hsl(15, 100%, 50%),
-                    0 2px 0 hsl(15, 100%, 20%),
-                    0 3px 0 hsl(15, 100%, 18%),
-                    0 4px 0 hsl(15, 100%, 16%),
-                    0 5px 0 hsl(15, 100%, 14%),
-                    0 6px 0 hsl(15, 100%, 12%)
+  box-shadow: inset 0 1px 0 hsl(168, 87%, 66%),
+                    0 2px 0 hsl(168, 87%, 30%),
+                    0 3px 0 hsl(168, 87%, 28%),
+                    0 4px 0 hsl(168, 87%, 26%),
+                    0 5px 0 hsl(168, 87%, 24%),
+                    0 6px 0 hsl(168, 87%, 22%)
 }
 
 .button_draw:hover {
-  background: radial-gradient(hsl(15, 100%, 60%), hsl(15, 100%, 50%));
+  background: radial-gradient(hsl(168, 87%, 80%), hsl(168, 87%, 70%));
 }
 
 .button_draw:active {
-  background: radial-gradient(hsl(15, 100%, 40%), hsl(15, 100%, 30%));
+  background: radial-gradient(hsl(168, 87%, 55%), hsl(168, 87%, 45%));
 }
 
 .button_draw:disabled {
-  background: radial-gradient(hsl(15, 100%, 20%), hsl(15, 100%, 10%));
+  background: radial-gradient(hsl(168, 87%, 40%), hsl(168, 87%, 30%));
 }
 
 .close {
   align-self: center;
-  background: radial-gradient(hsl(15, 100%, 50%), hsl(15, 100%, 40%));
+  background: radial-gradient(hsl(168, 87%, 50%), hsl(168, 87%, 40%));
 
   font-size: 1.4rem;
   text-shadow: 0 -1px 0 #c3af07;
@@ -223,4 +221,35 @@
 
 .close:active {
   background: radial-gradient(hsl(15, 100%, 40%), hsl(15, 100%, 30%));
+}
+
+@media (min-width: 600px) {
+ :root {
+  --play-area-width: 550px;
+  --card-width: 136px;
+  --card-height: 188px;
+  --computer-offset: translate(10px, 10px);
+  --player-offset: translate(403px, 298px);
+  --player-name-offset: translate(374px, 389px);
+  --computer-name-offset: translate(30px, 49px);
+  --card-scale: scale(0.75);
+  --svg-position-computer: 0% 0%;
+  --svg-position-player: 0% 0%;
+ }
+
+  @keyframes draw {
+    0% {left: 0px; top: 0px}
+    50% {left: 196px; top: 0px}
+    90% {left: 196px; top: 47px}
+    95% {left: 196px; top: 30px}
+    100% {left: 196px; top: 47px}
+  }
+
+  @keyframes draw-player {
+    0% {left: 0px; top: 0px}
+    50% {left: -196px; top: 0px}
+    90% {left: -196px; top: -47px}
+    95% {left: -196px; top: -30px}
+    100% {left: -196px; top: -47px}
+  }
 }
