@@ -3,6 +3,8 @@
   --card-height: 138px;
   --computer-offset: translate(10px, 10px);
   --player-offset: translate(189px, 350px);
+  --player-name-offset: translate(160px, 389px);
+  --computer-name-offset: translate(30px, 49px);
   --card-scale: scale(0.55);
   --svg-position-computer: 0% 0%;
   --svg-position-player: 0% 0%;
@@ -31,9 +33,6 @@
 }
 
 .play_area {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   width: 300px;
   height: 500px;
   background-color:chartreuse;
@@ -55,9 +54,35 @@
   transform: var(--player-offset);
 }
 
+discard {
+  animation: computer-zone 1s ease-in;
+}
+
+@keyframes computer-zone {
+  0% {left: 0px; top: 0px}
+  100% {left: 25px; top: 80px}
+}
+
+.name {
+  z-index: 3;
+  position: absolute;
+  transform-origin: center;
+  font-family: Comic Sans MS;
+  font-size: 2rem;
+  color: #000;
+  text-shadow: 2px 2px 0px #e7eef1, 5px 5px 0px rgba(0,0,0,0.1);
+}
+
+.comp-title {
+  transform: var(--computer-name-offset);
+}
+
+.play-title {
+  transform: var(--player-name-offset);
+}
 
 .card_container {
-  background-color: orange;
+  background-color: red;
   width: var(--card-width);
   height: var(--card-height);
   display: block;
@@ -79,15 +104,40 @@
 
 .computer .face {
   object-position: var(--svg-position-computer);
-  z-index: 1;
-  animation: computer_draw 3s ease-in;
+}
+
+.computer-face-card {
+  animation: draw 3s;
+  animation-fill-mode: forwards;
+}
+
+.player-face-card {
+  animation: draw-player 3s;
+  animation-fill-mode: forwards;
 }
 
 @keyframes draw {
-  from
-
+  0% {left: 0px; top: 0px}
+  50% {left: 0px; top: 170px}
+  90% {left: 38px; top: 170px}
+  95% {left: 30px; top: 170px}
+  100% {left: 38px; top: 170px}
 }
 
+@keyframes draw-player {
+  0% {left: 0px; top: 0px}
+  50% {left: 0px; top: -170px}
+  90% {left: -38px; top: -170px}
+  95% {left: -30px; top: -170px}
+  100% {left: -38px; top: -170px}
+}
+
+.score {
+  font-size: 1rem;
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+}
 
 .button_draw {
   align-self: center;
