@@ -75,20 +75,20 @@ const tempHolding = function(takenDeck) { //adds to temp array for ties
 }
 
 const createCard = function(player, cardData) {
+
+  const playArea = document.querySelector(".play_area");
+  const cardFace = document.createElement('img');
+  const thisCard = document.createElement('card');
+
+  calcFace(player, cardData);
+
+  cardFace.classList.add('card');
+  cardFace.setAttribute('src', '/images/playing_cards.svg')
   
-  // const playArea = document.querySelector(".play_area");
-  // const cardFace = document.createElement('img');
-  // const thisCard = document.createElement('card');
+  thisCard.classList.add('card_container', 'face', `${player}`);
 
-  // calcFace(player, cardData);
-
-  // cardFace.classList.add('card', 'face');
-  // cardFace.setAttribute('src', '/images/playing_cards.svg')
-  
-  // thisCard.classList.add('card_container', `${player}`);
-
-  // thisCard.appendChild(cardFace);
-  // playArea.appendChild(thisCard);
+  thisCard.appendChild(cardFace);
+  playArea.appendChild(thisCard);
 }
 
 

@@ -64,30 +64,13 @@
   overflow: hidden;
 }
 
+.deck {
+  z-index: 2;
+}
+
 .card {
   transform-origin: top left;
   transform: var(--card-scale);
-}
-
-.front {
-  backface-visibility: hidden;
-}
-
-.back {
-  backface-visibility: hidden;
-}
-
-/* section .card_container {
-  perspective: 1000px;
-} */
-
-section .card_container:hover .flip {
-  transform: rotateY(180deg);
-}
-
-.flip {
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
 }
 
 .player .face {
@@ -96,13 +79,14 @@ section .card_container:hover .flip {
 
 .computer .face {
   object-position: var(--svg-position-computer);
+  z-index: 1;
+  animation: computer_draw 3s ease-in;
 }
 
-/* .card {
-  transform-origin: top left;
-  transform: scale(0.55);
-  object-position: 0% 0%;
-} */
+@keyframes draw {
+  from
+
+}
 
 
 .button_draw {
