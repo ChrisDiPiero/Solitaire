@@ -10,6 +10,22 @@
 <body>
 <div class="main container">
     <h1 class="h1">WAR!!1!!</h1>
+    <div class="overlay">
+      <p>War is a classic card game of strategy and... okay, no, not really. It's just 
+        pure, dumb luck. The object is to take as many of the cards in the deck that
+         you can. A standard deck of cards is shuffled and dealt out to two or more 
+         players. Each player flips the top card their pile at the same time. Whoever
+          has the highest card takes all of the cards played that round. Of course, jacks 
+          beat 10s, queens beat jacks, Kings beat queens, and aces beat all! There is a 
+          variation of the rules where a 2 can beat an ace. In the case of a tie, the 
+          players leave the flipped cards in the kitty and flip one more each. The winner
+          then takes all the cards in the kitty, unless there's a tie! Rinse, repeat. There's
+          another variation where on a tie, three cards are placed in the kitty face down by 
+          each player, then one more is flipped over. The winner then takes all the cards. 
+          The game is played until all of the cards have been taken. Enjoy!
+      </p>
+      <button class="close">Play Game</button>
+    </div>
     <div class="score">
       <span>
         Computer: <span id="comp-score">0</span>
@@ -27,8 +43,6 @@
 
         <p class="name comp-title">Computer</p>
 
-
-  
         <p class="name play-title">Player</p>
 
         <card class="card_container player deck">
@@ -38,12 +52,12 @@
     </section>
   
       <button id="button_draw" class="button_draw">Draw</button>
+
+      <div class="whoWon"></div>
   
     <script type="module" src="scripts/script.js"></script>
     <!-- resources
-    How to build a simple card game with JavaScript: https://www.youtube.com/watch?v=NxRwIZWjLtE&t=609s
-    Fisher-Yates sort: https://medium.com/@nitinpatel_20236/how-to-shuffle-correctly-shuffle-an-array-in-javascript-15ea3f84bfb
-    flip animation: https://www.w3schools.com/howto/howto_css_flip_card.asp
+    
     bullet holes: https://thenounproject.com/term/bullet-holes/4046912/
                 Angelica Pardi: https://thenounproject.com/angelica_ashley
                 bullet holes by Angelica Pardi from the Noun Project

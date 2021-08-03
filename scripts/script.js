@@ -8,9 +8,11 @@ const theDeck = new DeckBuilder();
 theDeck.deckSort(theDeck.cards);
 console.log(theDeck.cards);
 
+const closeButton = document.querySelector('.close');
 const drawCard = document.querySelector('#button_draw');
 const compScore = document.querySelector('#comp-score');
 const playScore = document.querySelector('#play-score');
+const overlay = document.querySelector('.overlay');
 
 const computerDeck = theDeck.cards.slice(0, (theDeck.cards.length / 2) );
 const playerDeck = theDeck.cards.slice( (theDeck.cards.length / 2) );
@@ -18,6 +20,8 @@ const playerDeck = theDeck.cards.slice( (theDeck.cards.length / 2) );
 let computerTakenCards = [];
 let playerTakenCards = [];
 let temp = [];
+
+drawCard.disabled = true;
 
 //global Functions
 const calcFace = function(player, cardData) {
@@ -42,6 +46,11 @@ const calcFace = function(player, cardData) {
   root.style.setProperty(`--svg-position-${player}`, `${-179.5 * x}px ${-252 * y}px`);
 }
 
+const startGame = function () {
+  overlay.remove();
+  drawCard.disabled = false;
+}
+
 const shootCard = function () {
 
 }
@@ -53,8 +62,6 @@ const makeWarNotLove = function () {
 const removeCards = function () {
   let computerCard = document.querySelector(".computer-face-card");
   let playerCard = document.querySelector(".player-face-card");
-  computerCard.classList.add('discard');
-  playerCard.classList.add('discard');
   setTimeout(function () {
     computerCard.remove();
     playerCard.remove();
@@ -130,7 +137,7 @@ const playRound = function () {
 
 
 
-
+closeButton.addEventListener('click', startGame);
 drawCard.addEventListener('click', playRound);
 // while (!gameOver) {
 

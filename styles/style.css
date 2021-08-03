@@ -17,6 +17,19 @@
   box-sizing: border-box;
 }
 
+.overlay {
+  position: fixed;
+  width: 350px;
+  height: 560px;
+  z-index: 4;
+  border-radius: 10px;
+  padding: 15px;
+  background-color: rgba(250, 250, 250, 0.85);
+  align-self: center;
+  border: solid 5px #fff;
+  box-shadow: inset 0 0 10px rgb(10, 10, 10);
+}
+
 .main {
   background-color: #d6beb8;
   height: 100vh;
@@ -54,15 +67,6 @@
   transform: var(--player-offset);
 }
 
-discard {
-  animation: computer-zone 1s ease-in;
-}
-
-@keyframes computer-zone {
-  0% {left: 0px; top: 0px}
-  100% {left: 25px; top: 80px}
-}
-
 .name {
   z-index: 3;
   position: absolute;
@@ -82,11 +86,13 @@ discard {
 }
 
 .card_container {
-  background-color: red;
   width: var(--card-width);
   height: var(--card-height);
   display: block;
   overflow: hidden;
+  border: solid 1px #fff;
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px rgb(10, 10, 10);
 }
 
 .deck {
@@ -116,6 +122,10 @@ discard {
   animation-fill-mode: forwards;
 }
 
+.whoWon {
+  display: none;
+}
+
 @keyframes draw {
   0% {left: 0px; top: 0px}
   50% {left: 0px; top: 170px}
@@ -130,6 +140,18 @@ discard {
   90% {left: -38px; top: -170px}
   95% {left: -30px; top: -170px}
   100% {left: -38px; top: -170px}
+}
+
+@keyframes spin-card {
+  0% {transform: rotate(0deg)}
+  60% {transform: rotate(0deg)}
+  100% {transform: rotate(720deg)}
+}
+
+@keyframes spin-card {
+  0% {transform: shrink(1)}
+  60% {transform: shrink(1)}
+  100% {transform: shrink(0)}
 }
 
 .score {
@@ -147,7 +169,7 @@ discard {
   text-shadow: 0 -1px 0 #c3af07;
   color: white;
   border: solid 1px hsl(15, 100%, 20%);
-  border-radius: 10%;
+  border-radius: 10px;
   height: 35px;
   width: 120px;
   z-index: 4;
@@ -160,4 +182,45 @@ discard {
                     0 4px 0 hsl(15, 100%, 16%),
                     0 5px 0 hsl(15, 100%, 14%),
                     0 6px 0 hsl(15, 100%, 12%)
+}
+
+.button_draw:hover {
+  background: radial-gradient(hsl(15, 100%, 60%), hsl(15, 100%, 50%));
+}
+
+.button_draw:active {
+  background: radial-gradient(hsl(15, 100%, 40%), hsl(15, 100%, 30%));
+}
+
+.button_draw:disabled {
+  background: radial-gradient(hsl(15, 100%, 20%), hsl(15, 100%, 10%));
+}
+
+.close {
+  align-self: center;
+  background: radial-gradient(hsl(15, 100%, 50%), hsl(15, 100%, 40%));
+
+  font-size: 1.4rem;
+  text-shadow: 0 -1px 0 #c3af07;
+  color: white;
+  border: solid 1px hsl(15, 100%, 20%);
+  border-radius: 10px;
+  height: 35px;
+  width: 120px;
+  z-index: 4;
+
+  outline: none;
+
+  box-shadow: inset 0 1px 0 hsl(15, 100%, 50%),
+                    0 3px 0 hsl(15, 100%, 18%),
+                    0 4px 0 hsl(15, 100%, 16%),
+                    0 6px 0 hsl(15, 100%, 12%)
+}
+
+.close:hover {
+  background: radial-gradient(hsl(15, 100%, 60%), hsl(15, 100%, 50%));
+}
+
+.close:active {
+  background: radial-gradient(hsl(15, 100%, 40%), hsl(15, 100%, 30%));
 }
