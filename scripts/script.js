@@ -10,8 +10,8 @@ console.log(theDeck.cards);
 
 const closeButton = document.querySelector('.close');
 const drawCard = document.querySelector('#button_draw');
-const compScore = document.querySelector('#comp-score');
-const playScore = document.querySelector('#play-score');
+const computerScore = document.querySelector('#comp-score');
+const playerScore = document.querySelector('#play-score');
 const overlay = document.querySelector('.overlay');
 
 const computerDeck = theDeck.cards.slice(0, (theDeck.cards.length / 2) );
@@ -51,6 +51,11 @@ const startGame = function () {
   drawCard.disabled = false;
 }
 
+const updateScore = function () {
+  computerScore.innerHTML = computerTakenCards.length;
+  playerScore.innerHTML = playerTakenCards.length;
+}
+
 const shootCard = function () {
 
 }
@@ -66,16 +71,15 @@ const removeCards = function () {
     computerCard.remove();
     playerCard.remove();
     drawCard.disabled = false;
-    compScore.innerHTML = computerTakenCards.length;
-    playScore.innerHTML = playerTakenCards.length;
-  }, 5000);
+  }, 1000);
 }
 
 const endRound = function (takenCards, side) {
   takenCards.push(computerDeck.splice(0, 1), playerDeck.splice(0, 1)); // pushes won cards to this take pile
-  if(temp.length) {tempHolding(takenCards)} // pulls temp cards (from tie) to this take pile
+  if(temp.length && side !== "tie") {tempHolding(takenCards)} // pulls temp cards (from tie) to this take pile
   console.log(`The ${side} won.`);
-  removeCards(side);
+  removeCards();
+  updateScore();
 }
 
 const tempHolding = function(takenDeck) { //pulls all cards from temp array into winner
@@ -119,6 +123,7 @@ const playRound = function () {
   console.log(computerDeck[0]);
   createCard("player", playerDeck[0]);
   console.log(playerDeck[0]);
+  console.log(temp.length);
 
   if (computerDeck[0].value > playerDeck[0].value) { // computer wins round
     endRound(computerTakenCards, "computer");
@@ -130,8 +135,7 @@ const playRound = function () {
     if(drawThree) {
       makeWarNotLove(); //tests for house rule draw three
     }
-    temp.push(computerDeck.splice(0, 1), playerDeck.splice(0, 1)); // cards added to temp
-    playRound();
+    endRound(temp, "tie");
   }
 }
 
