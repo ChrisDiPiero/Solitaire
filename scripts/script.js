@@ -99,7 +99,7 @@ const createCard = function(side, cardData) {
   calcFace(side, cardData);
 
   cardFace.classList.add('card', 'face');
-  cardFace.setAttribute('src', '/images/playing_cards.svg')
+  cardFace.setAttribute('src', './images/playing_cards.svg')
   
   thisCard.classList.add('card_container', `${side}`, `${side}-face-card`);
 
