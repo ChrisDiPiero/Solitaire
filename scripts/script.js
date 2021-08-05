@@ -4,18 +4,19 @@ let gameOver = false;
 let drawThree = false;
 
 // make and shuffle deck
-const theDeck = new DeckBuilder();
+let theDeck = new DeckBuilder();
 theDeck.deckSort(theDeck.cards);
-console.log(theDeck.cards);
 
-const closeButton = document.querySelector('.close');
+const closeButton = document.querySelector('.start-game');
+const replayButton = document.querySelector('.replay');
 const drawCard = document.querySelector('#button_draw');
 const computerScore = document.querySelector('#comp-score');
 const playerScore = document.querySelector('#play-score');
 const overlay = document.querySelector('.overlay');
+const winOverlay = document.querySelector('.who-won');
 
-const computerDeck = theDeck.cards.slice(0, (theDeck.cards.length / 2) );
-const playerDeck = theDeck.cards.slice( (theDeck.cards.length / 2) );
+let computerDeck = theDeck.cards.slice(0, (theDeck.cards.length / 2) );
+let playerDeck = theDeck.cards.slice( (theDeck.cards.length / 2) );
 
 let computerTakenCards = [];
 let playerTakenCards = [];
@@ -47,8 +48,8 @@ const calcFace = function(player, cardData) {
 }
 
 const startGame = function () {
-  overlay.remove();
   drawCard.disabled = false;
+  overlay.remove();
 }
 
 const updateScore = function () {
@@ -65,13 +66,15 @@ const makeWarNotLove = function () {
 }
 
 const removeCards = function () {
-  let computerCard = document.querySelector(".computer-face-card");
-  let playerCard = document.querySelector(".player-face-card");
+  let computerCard = document.querySelector('.computer-face-card');
+  let playerCard = document.querySelector('.player-face-card');
   setTimeout(function () {
     computerCard.remove();
     playerCard.remove();
-    drawCard.disabled = false;
-  }, 1000);
+
+      drawCard.disabled = false;
+
+  }, 5000);
 }
 
 const endRound = function (takenCards, side) {
@@ -80,6 +83,10 @@ const endRound = function (takenCards, side) {
   console.log(`The ${side} won.`);
   removeCards();
   updateScore();
+
+  if (!computerDeck.length || !playerDeck.length) {
+    whoWon();
+  }
 }
 
 const tempHolding = function(takenDeck) { //pulls all cards from temp array into winner
@@ -87,7 +94,7 @@ const tempHolding = function(takenDeck) { //pulls all cards from temp array into
 }
 
 const createCard = function(side, cardData) {
-  const playArea = document.querySelector(".play_area");
+  const playArea = document.querySelector('.play_area');
   const cardFace = document.createElement('img');
   const thisCard = document.createElement('card');
 
@@ -102,23 +109,48 @@ const createCard = function(side, cardData) {
   playArea.appendChild(thisCard);
 }
 
+const displayWinner = function (winText) {
+  const textContainer = document.createElement('h2');
+  textContainer.classList.add('h2', 'win-text');
+  const newText = document.createTextNode(winText);
+  textContainer.appendChild(newText);
+  winOverlay.appendChild(textContainer);
+  winOverlay.style.display = 'block';
+}
+
+
+const whoWon = function () {
+  drawCard.disabled = true;
+  let winner;
+  if (computerTakenCards.length > playerTakenCards.length) {
+    winner = "The computer won!"
+  } else if(computerTakenCards.length < playerTakenCards.length) {
+    winner = "You won!"
+  } else {
+    winner = "It was a tie!"
+  }
+  displayWinner(winner);
+}
+
+const replayGame = function () {
+  document.querySelector('.win-text').remove();
+  winOverlay.style.display = 'none';
+  theDeck = new DeckBuilder();
+  theDeck.deckSort(theDeck.cards);
+
+  computerDeck = theDeck.cards.slice(0, (theDeck.cards.length / 2) );
+  playerDeck = theDeck.cards.slice( (theDeck.cards.length / 2) );
+
+  computerTakenCards = [];
+  playerTakenCards = [];
+  temp = [];
+  drawCard.disabled = false;
+}
+
 
 // war logic
 const playRound = function () {
   drawCard.disabled = true;
-  if (!computerDeck.length || !playerDeck.length) {
-    let won = () => {
-      if (computerTakenCards.length > playerTakenCards.length) {
-        return "The computer won!"
-      } else if(computerTakenCards.length < playerTakenCards.length) {
-        return "You won!"
-      } else {
-        return "It was a tie!"
-      }
-    }
-    alert(`game over! ${won()}`);
-  }
-
   createCard("computer", computerDeck[0]);
   console.log(computerDeck[0]);
   createCard("player", playerDeck[0]);
@@ -143,6 +175,7 @@ const playRound = function () {
 
 closeButton.addEventListener('click', startGame);
 drawCard.addEventListener('click', playRound);
+replayButton.addEventListener('click', replayGame);
 // while (!gameOver) {
 
 // }

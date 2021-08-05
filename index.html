@@ -5,26 +5,39 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles/style.css">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
   <title>WAR</title>
 </head>
 <body>
 <div class="main container">
-    <h1 class="h1">WARBEAN</h1>
+    <h1 class="h1">WAR</h1>
     <div class="overlay">
       <p>War is a classic card game of strategy and... okay, no, not really. It's just 
-        pure, dumb luck. The object is to take as many of the cards in the deck that
+        pure, dumb luck.
+      </p>
+      <p>The object is to take as many of the cards in the deck that
          you can. A standard deck of cards is shuffled and dealt out to two or more 
          players. Each player flips the top card of their pile at the same time. Whoever
-          has the highest card takes all of the cards played that round. Of course, jacks 
-          beat 10s, queens beat jacks, Kings beat queens, and aces beat all! There is a 
-          variation of the rules where a 2 can beat an ace. In the case of a tie, the 
-          players leave the flipped cards in the kitty and flip one more each. The winner
-          then takes all the cards in the kitty, unless there's a tie! Rinse, repeat. There's
-          another variation where on a tie, three cards are placed in the kitty face down by 
-          each player, then one more is flipped over. The winner then takes all the cards. 
-          The game is played until all of the cards have been taken. Enjoy!
+        has the highest card takes all of the cards played that round. Of course, jacks 
+        beat 10s, queens beat jacks, Kings beat queens, and aces beat all!
+      </p> 
+      <p>
+        In the case of a tie, the players leave the flipped cards in the kitty and flip one more each. The winner
+        then takes all the cards in the kitty, unless there's a tie! Rinse, repeat.
       </p>
-      <button class="close">Play Game</button>
+      <p>
+        The game is played until all of the cards have been taken. Click the "Play Game" 
+        button below. Once this window closed, you can start each round by clicking
+        the "Draw" button. Enjoy!
+      </p>
+      <h2>House Rules</h2>
+      <p>
+        There's are often variations, or "house rules", when playing a game like this.
+        One such variation is where on a tie, three more cards are placed in the kitty, 
+        face down, by each player, then one more is flipped over. The winner then takes all the cards.
+        Another is the rule where an ace is beaten by a two. Be on the lookout for an update!
+      </p>
+      <button class="button start-game">Play Game</button>
     </div>
     <div class="score">
       <span>
@@ -41,9 +54,9 @@
           <img src="/images/card_back.svg"alt="card back" class="card">
         </card>
 
-        <p class="name comp-title">Computer</p>
+        <p class="name comp-title">COMPUTER</p>
 
-        <p class="name play-title">Player</p>
+        <p class="name play-title">PLAYER</p>
 
         <card class="card_container player deck">
           <img src="/images/card_back.svg" alt="card back" class="card">
@@ -51,9 +64,14 @@
 
     </section>
   
-      <button id="button_draw" class="button_draw">Draw</button>
+      <button id="button_draw" class="button button_draw">Draw</button>
 
-      <div class="whoWon"></div>
+      <div class="who-won overlay">
+        <p>
+          Want to play again? Click below!
+        </p>
+        <button class="button replay">Play Again</button>
+      </div>
   
     <script type="module" src="scripts/script.js"></script>
     <!-- resources
@@ -61,6 +79,9 @@
     bullet holes: https://thenounproject.com/term/bullet-holes/4046912/
                 Angelica Pardi: https://thenounproject.com/angelica_ashley
                 bullet holes by Angelica Pardi from the Noun Project
+    Explosion: https://thenounproject.com/search/?q=nuke&i=67808
+                https://thenounproject.com/M_Julz/
+                explosion by Julien Meysmans from the Noun Project
   -->
 </div>
 </body>
