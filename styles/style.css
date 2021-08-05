@@ -158,8 +158,9 @@
 }
 
 .bullet-hole {
-  z-index: 5;
+  z-index: 10;
   align-self: center;
+  object-position: 50%, 50%;
 }
 
 .button {

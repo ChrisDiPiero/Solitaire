@@ -57,14 +57,7 @@ const updateScore = function () {
   playerScore.innerHTML = playerTakenCards.length;
 }
 
-const shootCard = function (shotCard) {
-  const bulletHole = document.createElement('img');
-  bulletHole.setAttribute('src', 'images/noun_bullet_holes_4046912.svg');
-  bulletHole.classList.add('bullet-hole');
-  console.log(shotCard);
-  console.log(bulletHole);
-  shotCard.appendChild(bulletHole);
-}
+
 
 const makeWarNotLove = function () {
 
@@ -75,7 +68,8 @@ const removeCards = function (computerCard, playerCard) {
     computerCard.remove();
     playerCard.remove();
     drawCard.disabled = false;
-  }, 60000);
+    updateScore();
+  }, 4000);
 }
 
 const endRound = function (takenCards, side) {
@@ -84,10 +78,9 @@ const endRound = function (takenCards, side) {
   console.log(`The ${side} won.`);
   let computerCard = document.querySelector('.computer-face-card');
   let playerCard = document.querySelector('.player-face-card');
-  let shootThis = side === "computer" ? playerCard : computerCard;
-  shootCard(shootThis);
+
   removeCards(computerCard, playerCard);
-  updateScore();
+
 
   if (!computerDeck.length || !playerDeck.length) {
     whoWon();
