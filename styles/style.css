@@ -157,6 +157,11 @@
   justify-content: space-evenly;
 }
 
+.bullet-hole {
+  z-index: 5;
+  align-self: center;
+}
+
 .button {
   align-self: center;
   background: radial-gradient(hsl(332, 87%, 66%), hsl(332, 87%, 56%));

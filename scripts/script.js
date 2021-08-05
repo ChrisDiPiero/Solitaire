@@ -57,31 +57,36 @@ const updateScore = function () {
   playerScore.innerHTML = playerTakenCards.length;
 }
 
-const shootCard = function () {
-
+const shootCard = function (shotCard) {
+  const bulletHole = document.createElement('img');
+  bulletHole.setAttribute('src', 'images/noun_bullet_holes_4046912.svg');
+  bulletHole.classList.add('bullet-hole');
+  console.log(shotCard);
+  console.log(bulletHole);
+  shotCard.appendChild(bulletHole);
 }
 
 const makeWarNotLove = function () {
 
 }
 
-const removeCards = function () {
-  let computerCard = document.querySelector('.computer-face-card');
-  let playerCard = document.querySelector('.player-face-card');
+const removeCards = function (computerCard, playerCard) {
   setTimeout(function () {
     computerCard.remove();
     playerCard.remove();
-
-      drawCard.disabled = false;
-
-  }, 5000);
+    drawCard.disabled = false;
+  }, 60000);
 }
 
 const endRound = function (takenCards, side) {
   takenCards.push(computerDeck.splice(0, 1), playerDeck.splice(0, 1)); // pushes won cards to this take pile
   if(temp.length && side !== "tie") {tempHolding(takenCards)} // pulls temp cards (from tie) to this take pile
   console.log(`The ${side} won.`);
-  removeCards();
+  let computerCard = document.querySelector('.computer-face-card');
+  let playerCard = document.querySelector('.player-face-card');
+  let shootThis = side === "computer" ? playerCard : computerCard;
+  shootCard(shootThis);
+  removeCards(computerCard, playerCard);
   updateScore();
 
   if (!computerDeck.length || !playerDeck.length) {
