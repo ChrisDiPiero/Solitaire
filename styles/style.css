@@ -27,7 +27,8 @@
 .overlay {
   position: fixed;
   width: var(--play-area-width);
-  height: 560px;
+  height: 500px;
+  margin-top: 35px;
   z-index: 4;
   border-radius: 10px;
   padding: 15px;
@@ -35,6 +36,7 @@
   align-self: center;
   border: solid 5px #fff;
   box-shadow: inset 0 0 10px rgb(10, 10, 10);
+  overflow-y: auto;
 }
 
 .main {
@@ -100,6 +102,7 @@
   border: solid 1px #fff;
   border-radius: 5px;
   box-shadow: inset 0 0 5px rgb(10, 10, 10);
+  background-color: red;
 }
 
 .deck {
@@ -109,6 +112,7 @@
 .card {
   transform-origin: top left;
   transform: var(--card-scale);
+
 }
 
 .player .face {
@@ -120,13 +124,40 @@
 }
 
 .computer-face-card {
-  animation: draw 3s;
+  animation: draw 2s;
   animation-fill-mode: forwards;
 }
 
 .player-face-card {
-  animation: draw-player 3s;
+  animation: draw-player 2s;
   animation-fill-mode: forwards;
+}
+
+
+
+.death-flash {
+  animation: flash 3.3s;
+}
+
+@keyframes flash {
+  0%{opacity: 100}
+  67%{opacity: 100}
+  71%{opacity: 0}
+  75%{opacity: 100}
+  79%{opacity: 0}
+  83%{opacity: 100}
+  87%{opacity: 0}
+  91%{opacity: 100}
+}
+
+.score-flash {
+  animation: score-grow 1s;
+}
+
+@keyframes score-grow {
+  0%{transform: scale(1);}
+  50%{transform: scale(1.5);}
+  100%{transform: scale(1);}
 }
 
 .who-won {

@@ -1,6 +1,6 @@
 import { DeckBuilder } from './deckbuilder.js';
 
-let gameOver = false;
+// let gameOver = false;
 let drawThree = false;
 
 // make and shuffle deck
@@ -57,30 +57,47 @@ const updateScore = function () {
   playerScore.innerHTML = playerTakenCards.length;
 }
 
+// const flashScore = function (side) {
+//   if (side === "computer") {
+//     computerScore.classList.add('score-flash');
+//   } else if (side === "player") {
+//     playerScore.classList.add('score-flash');
+//   }
+// }
 
 
-const makeWarNotLove = function () {
 
-}
+// const makeWarNotLove = function () {
 
-const removeCards = function (computerCard, playerCard) {
+// }
+
+const removeCards = function (computerCard, playerCard, side) {
+  computerScore.classList.remove('score-flash');
+  playerScore.classList.remove('score-flash');
+  // flashScore(side);
   setTimeout(function () {
     computerCard.remove();
     playerCard.remove();
     drawCard.disabled = false;
-    updateScore();
-  }, 4000);
+    updateScore(side);
+  }, 3500);
+}
+
+const flashCard = function (side, computerCard, playerCard) {
+  let thisCard = side === 'computer' ? playerCard : computerCard;
+  let cardImg = thisCard.children[0];
+  cardImg.classList.add('death-flash');
 }
 
 const endRound = function (takenCards, side) {
   takenCards.push(computerDeck.splice(0, 1), playerDeck.splice(0, 1)); // pushes won cards to this take pile
   if(temp.length && side !== "tie") {tempHolding(takenCards)} // pulls temp cards (from tie) to this take pile
   console.log(`The ${side} won.`);
-  let computerCard = document.querySelector('.computer-face-card');
-  let playerCard = document.querySelector('.player-face-card');
+  const computerCard = document.querySelector('.computer-face-card');
+  const playerCard = document.querySelector('.player-face-card');
 
+  flashCard(side, computerCard, playerCard);
   removeCards(computerCard, playerCard);
-
 
   if (!computerDeck.length || !playerDeck.length) {
     whoWon();
@@ -112,7 +129,8 @@ const displayWinner = function (winText) {
   textContainer.classList.add('h2', 'win-text');
   const newText = document.createTextNode(winText);
   textContainer.appendChild(newText);
-  winOverlay.appendChild(textContainer);
+  const appendedDiv = document.querySelector('.append');
+  appendedDiv.appendChild(textContainer);
   winOverlay.style.display = 'block';
 }
 
