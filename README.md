@@ -11,6 +11,10 @@ I also tried to keep as much of the logic as functional as possible since my nex
 
 The card faces are a grid in a single SVG that I made in Illustrator. The card face and value data pulled from the player decks is used to calculate the object position of the SVG (ala sprite sheet animation).
 
+## Tech Used:
+
+All vanilla CSS and JavaScript.
+
 I got help getting started with building the deck of cards from the video:
 *How to build a simple card game with JavaScript*
 https://www.youtube.com/watch?v=NxRwIZWjLtE&t=609s
@@ -19,5 +23,15 @@ The deck shuffling I got from here:
 *Fisher-Yates Sort*
 https://medium.com/@nitinpatel_20236/how-to-shuffle-correctly-shuffle-an-array-in-javascript-15ea3f84bfb
 
+The "nuke" svg came from:
+*explosion by Julien Meysmans from the Noun Project*
+https://thenounproject.com/M_Julz/
+
 ## Deployed Site:
 https://chrisdipiero.github.io/WarCardGame/
+
+## Team:
+Yours truly:
+Chris DiPiero
+https://www.linkedin.com/in/christopherdipiero
+https://chrisdipiero.github.io/landingpage/
