@@ -152,6 +152,7 @@
 .score {
   width: var(--play-area-width);
   font-size: 1.25rem;
+  align-self: center;
   text-align: center;
   color: var(--highlight-color);
   display: flex;
