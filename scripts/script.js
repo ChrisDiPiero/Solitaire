@@ -80,11 +80,21 @@ const removeCards = function (computerCard, playerCard, side) {
     playerCard.remove();
     drawCard.disabled = false;
     updateScore(side);
+    if (!computerDeck.length || !playerDeck.length) {
+      whoWon();
+    }
   }, 3500);
 }
 
 const flashCard = function (side, computerCard, playerCard) {
-  let thisCard = side === 'computer' ? playerCard : computerCard;
+  let thisCard;
+  if (side==="player") {
+    thisCard = computerCard;
+  } else if  (side==="computer"){
+    thisCard = playerCard;
+  } else {
+    return
+  }
   let cardImg = thisCard.children[0];
   cardImg.classList.add('death-flash');
 }
@@ -98,10 +108,6 @@ const endRound = function (takenCards, side) {
 
   flashCard(side, computerCard, playerCard);
   removeCards(computerCard, playerCard);
-
-  if (!computerDeck.length || !playerDeck.length) {
-    whoWon();
-  }
 }
 
 const tempHolding = function(takenDeck) { //pulls all cards from temp array into winner
