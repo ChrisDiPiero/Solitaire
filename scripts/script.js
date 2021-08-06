@@ -166,6 +166,8 @@ const replayGame = function () {
   computerTakenCards = [];
   playerTakenCards = [];
   temp = [];
+  computerScore.innerHTML='0';
+  playerScore.innerHTML='0';
   drawCard.disabled = false;
 }
 
